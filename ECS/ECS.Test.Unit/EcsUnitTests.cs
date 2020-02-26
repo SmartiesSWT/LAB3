@@ -10,7 +10,7 @@ namespace ECS.Test.Unit
     {
         // member variables to hold uut and fakes
         private ITempSensor _fakeTempSensor;
-        private IHeater _fakeHeater;
+        private IHeater _Heater;
         private ECS _uut;
         private IWindow _fakeWindow;
 
@@ -18,17 +18,17 @@ namespace ECS.Test.Unit
         public void Setup()
         {
             // Create the fake stubs and mocks
-            //_fakeHeater = new FakeHeater();
+            //_Heater = new FakeHeater();
             //_fakeTempSensor = new FakeTempSensor();
             //_fakeWindow = new FakeWindow();
             // Inject them into the uut via the constructor
-            //_uut = new ECS(_fakeTempSensor, _fakeHeater, _fakeWindow, 25, 28);
+            //_uut = new ECS(_fakeTempSensor, _Heater, _fakeWindow, 25, 28);
 
-            _fakeHeater = Substitute.For<IHeater>();
+            _Heater = Substitute.For<IHeater>();
             _fakeTempSensor = Substitute.For<ITempSensor>();
             _fakeWindow = Substitute.For<IWindow>();
 
-            _uut = new ECS(_fakeTempSensor, _fakeHeater, _fakeWindow, 20, 30);
+            _uut = new ECS(_fakeTempSensor, _Heater, _fakeWindow, 20, 30);
 
         }
 
@@ -37,7 +37,7 @@ namespace ECS.Test.Unit
         {
             _fakeTempSensor.GetTemp().Returns(19);
             _uut.Regulate();
-            _fakeHeater.Received(1).TurnOn();
+            _Heater.Received(1).TurnOn();
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace ECS.Test.Unit
         {
             _fakeTempSensor.GetTemp().Returns(31);
             _uut.Regulate();
-            _fakeHeater.Received(1).TurnOff();
+            _Heater.Received(1).TurnOff();
         }
 
         [Test]
@@ -129,7 +129,7 @@ namespace ECS.Test.Unit
         //    _uut.Regulate();
 
         //    // Assert on the mock - was the heater called correctly
-        //    Assert.That(_fakeHeater.TurnOnCalledTimes, Is.EqualTo(1));
+        //    Assert.That(_Heater.TurnOnCalledTimes, Is.EqualTo(1));
         //}
 
 
@@ -158,7 +158,7 @@ namespace ECS.Test.Unit
         //    _uut.Regulate();
 
         //    // Assert on the mock - was the heater called correctly
-        //    Assert.That(_fakeHeater.TurnOffCalledTimes, Is.EqualTo(1));
+        //    Assert.That(_Heater.TurnOffCalledTimes, Is.EqualTo(1));
         //}
 
         //[Test]
@@ -185,7 +185,7 @@ namespace ECS.Test.Unit
         //    _uut.Regulate();
 
         //    // Assert on the mock - was the heater called correctly
-        //    Assert.That(_fakeHeater.TurnOnCalledTimes, Is.EqualTo(0));
+        //    Assert.That(_Heater.TurnOnCalledTimes, Is.EqualTo(0));
         //}
 
         //[Test]
@@ -211,7 +211,7 @@ namespace ECS.Test.Unit
         //    _uut.Regulate();
 
         //    // Assert on the mock - was the heater called correctly
-        //    Assert.That(_fakeHeater.TurnOffCalledTimes, Is.EqualTo(1));
+        //    Assert.That(_Heater.TurnOffCalledTimes, Is.EqualTo(1));
         //}
 
         //[Test]
@@ -237,7 +237,7 @@ namespace ECS.Test.Unit
         //    _uut.Regulate();
 
         //    // Assert on the mock - was the heater called correctly
-        //    Assert.That(_fakeHeater.TurnOffCalledTimes, Is.EqualTo(1));
+        //    Assert.That(_Heater.TurnOffCalledTimes, Is.EqualTo(1));
         //}
 
         //[Test]
